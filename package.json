@@ -14,7 +14,7 @@
 	"engines": {
 		"node": "6.x"
 	},
-	"devDependencies": {
+	"Dependencies": {
 		"babel-preset-env": "^1.7.0",
 		"babel-register": "^6.26.0"
 	}
