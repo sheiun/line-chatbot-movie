@@ -3,19 +3,11 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
-		"start": "node start.js"
+		"start": "node app.js"
 	},
-	"dependencies": {
-		"cfenv": "1.0.x",
-		"express": "4.15.x",
-		"linebot": "^1.4.1"
-	},
+	"dependencies": {},
 	"repository": {},
 	"engines": {
 		"node": "6.x"
-	},
-	"Dependencies": {
-		"babel-preset-env": "^1.7.0",
-		"babel-register": "^6.26.0"
 	}
 }
