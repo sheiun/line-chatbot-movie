@@ -6,8 +6,7 @@
 		"start": "node app.js"
 	},
 	"dependencies": {
-		"@line/bot-sdk": "^6.4.0",
-		"npm": "^6.5.0"
+		"@line/bot-sdk": "^6.4.0"
 	},
 	"repository": {},
 	"engines": {
