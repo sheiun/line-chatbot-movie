@@ -5,7 +5,9 @@
 	"scripts": {
 		"start": "node app.js"
 	},
-	"dependencies": {},
+	"dependencies": {
+		"@line/bot-sdk": "^6.4.0"
+	},
 	"repository": {},
 	"engines": {
 		"node": "6.x"
