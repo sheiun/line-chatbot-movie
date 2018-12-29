@@ -1,3 +1,5 @@
+'use strict';
+
 const line = require('@line/bot-sdk');
 const config = {
   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN_DEV,
@@ -13,6 +15,28 @@ let baseURL = appEnv.url;
 const fs = require('fs');
 const path = require('path');
 const cp = require('child_process');
+
+const watson = require('./watson.js')
+const movie = require('./movie.js')
+const app = require('../app.js')
+
+app.post('/callback', line.middleware(config), (req, res) => {
+  if (req.body.destination) {
+    console.log("Destination User ID: " + req.body.destination);
+  }
+
+  if (!Array.isArray(req.body.events)) {
+    return res.status(500).end();
+  }
+
+  Promise.all(req.body.events.map(handleEvent))
+    .then(() => res.end())
+    .catch((err) => {
+      console.error(err);
+      res.status(500).end();
+    });
+});
+
 
 const replyText = (token, texts) => {
   texts = Array.isArray(texts) ? texts : [texts];
@@ -251,9 +275,14 @@ function handleText(message, replyToken, source) {
             .then(() => client.leaveRoom(source.roomId));
       }
     default:
-      console.log(`Echo message to ${replyToken}: ${message.text}`);
-      // TODO: judge some default text
-      return replyText(replyToken, message.text);
+      console.log(`${replyToken}: ${message.text}`);
+      return watson.callAssistant(message.text, source.userId).then(resp => {
+        if (message.intents) {
+          const intent = message.intents[0].intent
+          return replyText(replyToken, movie.getAnswer(intent))
+        }
+        return replyText(replyToken, '不清楚')
+      });
   }
 }
 
