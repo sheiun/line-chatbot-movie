@@ -5,4 +5,6 @@ applications:
     memory: 256M
     instances: 1
     disk_quota: 1024M
-    services: []
+    services:
+      - mongodb-chatbot-final
+      - watson-chatbot-final
