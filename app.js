@@ -14,7 +14,7 @@ app.use('/downloaded', express.static('downloaded'));
 
 app.get('/callback', (req, res) => res.end(`I'm listening. Please access with POST.`));
 
-app.post('/callback', linebot.line.middleware(config), (req, res) => {
+app.post('/callback', linebot.channelConfig, (req, res) => {
   if (req.body.destination) {
     console.log("Destination User ID: " + req.body.destination);
   }
