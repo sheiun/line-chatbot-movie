@@ -109,7 +109,25 @@ function handleEvent(event) {
 
 function handleText(message, replyToken, source) {
   const buttonsImageURL = `${baseURL}/static/buttons/1040.jpg`;
-
+  return client.replyMessage(
+    replyToken,
+    {
+      type: 'template',
+      altText: 'Buttons alt text',
+      template: {
+        type: 'buttons',
+        thumbnailImageUrl: buttonsImageURL,
+        title: 'My button sample',
+        text: 'Hello, my button',
+        actions: [
+          { label: 'Go to line.me', type: 'uri', uri: 'https://line.me' },
+          { label: 'Say hello1', type: 'postback', data: 'hello こんにちは' },
+          { label: '言 hello2', type: 'postback', data: 'hello こんにちは', text: 'hello こんにちは' },
+          { label: 'Say message', type: 'message', text: 'Rice=米' },
+        ],
+      },
+    }
+  );
   switch (message.text) {
     case 'profile':
       if (source.userId) {
