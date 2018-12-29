@@ -19,7 +19,7 @@ let baseURL = appEnv.url;
 const client = new line.Client(config);
 const app = express();
 
-require: require('./services/linebot')
+const linebot = require('./services/linebot')
 
 app.use('/static', express.static('static'));
 app.use('/downloaded', express.static('downloaded'));
@@ -35,7 +35,7 @@ app.post('/callback', line.middleware(config), (req, res) => {
     return res.status(500).end();
   }
 
-  Promise.all(req.body.events.map(handleEvent))
+  Promise.all(req.body.events.map(linebot.handleEvent))
     .then(() => res.end())
     .catch((err) => {
       console.error(err);
