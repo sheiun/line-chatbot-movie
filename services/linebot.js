@@ -1,6 +1,17 @@
+const line = require('@line/bot-sdk');
+const config = {
+  channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN_DEV,
+  channelSecret: process.env.CHANNEL_SECRET_DEV,
+};
+const client = new line.Client(config);
+
 const cfenv = require('cfenv')
 const appEnv = cfenv.getAppEnv()
 let baseURL = appEnv.url;
+
+const fs = require('fs');
+const path = require('path');
+const cp = require('child_process');
 
 const replyText = (token, texts) => {
   texts = Array.isArray(texts) ? texts : [texts];
