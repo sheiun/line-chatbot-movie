@@ -4,8 +4,8 @@ const cfenv = require('cfenv')
 const appEnv = cfenv.getAppEnv()
 let baseURL = appEnv.url;
 
-const app = express();
 const express = require('express');
+const app = express();
 
 const linebot = require('./services/linebot')
 
