@@ -3,7 +3,7 @@ const config = {
   channelAccessToken: process.env.CHANNEL_ACCESS_TOKEN_DEV,
   channelSecret: process.env.CHANNEL_SECRET_DEV,
 };
-const channelConfig = linebot.line.middleware(config)
+const channelConfig = line.middleware(config)
 const client = new line.Client(config);
 
 const cfenv = require('cfenv')
