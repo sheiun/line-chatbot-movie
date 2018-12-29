@@ -35,7 +35,7 @@ app.post('/callback', line.middleware(config), (req, res) => {
     return res.status(500).end();
   }
 
-  Promise.all(req.body.events.map(handleEvent))
+  Promise.all(req.body.events.map(linebot.handleEvent))
     .then(() => res.end())
     .catch((err) => {
       console.error(err);

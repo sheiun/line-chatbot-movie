@@ -370,3 +370,5 @@ function handleSticker(message, replyToken) {
     }
   );
 }
+
+module.export = { handleEvent };
