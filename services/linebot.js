@@ -1,3 +1,7 @@
+const cfenv = require('cfenv')
+const appEnv = cfenv.getAppEnv()
+let baseURL = appEnv.url;
+
 const replyText = (token, texts) => {
   texts = Array.isArray(texts) ? texts : [texts];
   return client.replyMessage(
