@@ -421,4 +421,5 @@ function handleSticker(message, replyToken) {
 
 const port = appEnv.port || 3000
 app.listen(port, () => console.log(`listening on ${baseURL}:${port}/callback`));
+
 // module.exports = require('./services/movie.js')
