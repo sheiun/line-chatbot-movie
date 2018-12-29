@@ -18,25 +18,6 @@ const cp = require('child_process');
 
 const watson = require('./watson.js')
 const movie = require('./movie.js')
-const app = require('../app.js')
-
-app.post('/callback', line.middleware(config), (req, res) => {
-  if (req.body.destination) {
-    console.log("Destination User ID: " + req.body.destination);
-  }
-
-  if (!Array.isArray(req.body.events)) {
-    return res.status(500).end();
-  }
-
-  Promise.all(req.body.events.map(handleEvent))
-    .then(() => res.end())
-    .catch((err) => {
-      console.error(err);
-      res.status(500).end();
-    });
-});
-
 
 const replyText = (token, texts) => {
   texts = Array.isArray(texts) ? texts : [texts];
