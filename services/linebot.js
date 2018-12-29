@@ -1,6 +1,4 @@
-
-// simple reply function
-export const replyText = (token, texts) => {
+const replyText = (token, texts) => {
   texts = Array.isArray(texts) ? texts : [texts];
   return client.replyMessage(
     token,
@@ -8,8 +6,7 @@ export const replyText = (token, texts) => {
   );
 };
 
-// callback function to handle a single event
-export function handleEvent(event) {
+function handleEvent(event) {
   if (event.replyToken && event.replyToken.match(/^(.)\1*$/)) {
     return console.log("Test hook recieved: " + JSON.stringify(event.message));
   }
@@ -61,7 +58,7 @@ export function handleEvent(event) {
   }
 }
 
-export function handleText(message, replyToken, source) {
+function handleText(message, replyToken, source) {
   const buttonsImageURL = `${baseURL}/static/buttons/1040.jpg`;
 
   switch (message.text) {
@@ -244,7 +241,7 @@ export function handleText(message, replyToken, source) {
   }
 }
 
-export function handleImage(message, replyToken) {
+function handleImage(message, replyToken) {
   let getContent;
   if (message.contentProvider.type === "line") {
     const downloadPath = path.join(__dirname, 'downloaded', `${message.id}.jpg`);
@@ -278,7 +275,7 @@ export function handleImage(message, replyToken) {
     });
 }
 
-export function handleVideo(message, replyToken) {
+function handleVideo(message, replyToken) {
   let getContent;
   if (message.contentProvider.type === "line") {
     const downloadPath = path.join(__dirname, 'downloaded', `${message.id}.mp4`);
@@ -312,7 +309,7 @@ export function handleVideo(message, replyToken) {
     });
 }
 
-export function handleAudio(message, replyToken) {
+function handleAudio(message, replyToken) {
   let getContent;
   if (message.contentProvider.type === "line") {
     const downloadPath = path.join(__dirname, 'downloaded', `${message.id}.m4a`);
@@ -340,7 +337,7 @@ export function handleAudio(message, replyToken) {
     });
 }
 
-export function downloadContent(messageId, downloadPath) {
+function downloadContent(messageId, downloadPath) {
   return client.getMessageContent(messageId)
     .then((stream) => new Promise((resolve, reject) => {
       const writable = fs.createWriteStream(downloadPath);
@@ -350,7 +347,7 @@ export function downloadContent(messageId, downloadPath) {
     }));
 }
 
-export function handleLocation(message, replyToken) {
+function handleLocation(message, replyToken) {
   return client.replyMessage(
     replyToken,
     {
@@ -363,7 +360,7 @@ export function handleLocation(message, replyToken) {
   );
 }
 
-export function handleSticker(message, replyToken) {
+function handleSticker(message, replyToken) {
   return client.replyMessage(
     replyToken,
     {
