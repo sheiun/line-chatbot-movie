@@ -59,3 +59,5 @@ function getButtonActions(actions) {
 function getAnotherAction() {
   return { label: '其他', type: 'postback', data: 'action=another' }
 }
+
+module.exports = { getButtonTemplate }

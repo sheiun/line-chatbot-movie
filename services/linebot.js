@@ -258,12 +258,15 @@ function handleText(message, replyToken, source) {
     default:
       console.log(`${replyToken}: ${message.text}`);
       return watson.callAssistant(message.text, source.userId).then(resp => {
-        const response = resp;
-        if (response.intents[0]) {
-          const intent = response.intents[0].intent
-          return replyText(replyToken, movie.getAnswer(intent))
+        let intent;
+        if (resp.intents[0]) {
+          intent = resp.intents[0].intent;
+        } else if (resp.text[0]) {
+          intent = resp.text[0];
+        } else {
+          return replyText(replyToken, '不清楚');
         }
-        return replyText(replyToken, '不清楚')
+        return replyText(replyToken, components.getButtonTemplate(movie.getAnswer(intent)));
       });
   }
 }
