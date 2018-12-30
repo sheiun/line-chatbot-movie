@@ -76,5 +76,3 @@ function main() {
 }
 
 module.exports = { getAnswer }
-
-// main();
