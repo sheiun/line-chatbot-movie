@@ -1,37 +1,61 @@
 function templateMapper(dataArray) {
-    return {
-        "type": "template",
-        "altText": "影城清單",
-        "template": {
-            "type": "buttons",
-            "thumbnailImageUrl": "https:example.com/bot/images/image.jpg",
-            "imageAspectRatio": "rectangle",
-            "imageSize": "cover",
-            "imageBackgroundColor": "#FFFFFF",
-            "title": "Menu",
-            "text": "Please select",
-            "defaultAction": {
-                "type": "uri",
-                "label": "View detail",
-                "uri": "http:example.com/page/123"
-            },
-            "actions": [
-                {
-                    "type": "postback",
-                    "label": "Buy",
-                    "data": "action=buy&itemid=123"
-                },
-                {
-                    "type": "postback",
-                    "label": "Add to cart",
-                    "data": "action=add&itemid=123"
-                },
-                {
-                    "type": "uri",
-                    "label": "View detail",
-                    "uri": "http:example.com/page/123"
-                }
-            ]
+  return {
+    "type": "template",
+    "altText": "選擇影城",
+    "template": {
+      "type": "buttons",
+      "thumbnailImageUrl": "https:example.com/bot/images/image.jpg",
+      "imageAspectRatio": "rectangle",
+      "imageSize": "cover",
+      "imageBackgroundColor": "#FFFFFF",
+      "title": "Menu",
+      "text": "Please select",
+      "defaultAction": {
+        "type": "uri",
+        "label": "View detail",
+        "uri": "http:example.com/page/123"
+      },
+      "actions": [
+        {
+          "type": "postback",
+          "label": "Buy",
+          "data": "action=buy&itemid=123"
+        },
+        {
+          "type": "postback",
+          "label": "Add to cart",
+          "data": "action=add&itemid=123"
+        },
+        {
+          "type": "postback",
+          "label": "其他",
+          "uri": "action=another"
         }
+      ]
     }
+  }
+}
+
+function getButtonTemplate(actions, title = '標題', text = '文字', altText = '替代文字') {
+  return {
+    type: 'template',
+    altText: title,
+    template: {
+      type: 'buttons',
+      // thumbnailImageUrl: buttonsImageURL,
+      title: title,
+      text: text,
+      actions: getbuttonActions(actions),
+    },
+  }
+}
+
+function getButtonActions(actions) {
+  return actions.map(action => {
+    { label: action, type: 'postback': data: action }
+  });
+}
+
+function getAnotherAction() {
+  return { label: '其他', type: 'postback', data: 'action=another' }
 }
