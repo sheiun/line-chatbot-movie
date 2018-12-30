@@ -52,7 +52,7 @@ function getButtonTemplate(actions, title = '標題', text = '文字', altText =
 
 function getButtonActions(actions) {
   return actions.map(action => {
-    { label: action, type: 'postback': data: action }
+    { label: action, type: 'postback', data: action }
   });
 }
 
