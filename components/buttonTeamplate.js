@@ -39,13 +39,13 @@ function templateMapper(dataArray) {
 function getButtonTemplate(actions, title = '標題', text = '文字', altText = '替代文字') {
   return {
     type: 'template',
-    altText: title,
+    altText: altText,
     template: {
       type: 'buttons',
       // thumbnailImageUrl: buttonsImageURL,
       title: title,
       text: text,
-      actions: getbuttonActions(actions),
+      actions: getButtonActions(actions),
     },
   }
 }
@@ -61,3 +61,5 @@ function getAnotherAction() {
 }
 
 module.exports = { getButtonTemplate }
+
+// TODO: 自動切割 action 數量 max: 4 剩下存在 db 或
