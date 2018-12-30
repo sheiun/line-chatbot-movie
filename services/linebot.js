@@ -18,6 +18,7 @@ const cp = require('child_process');
 
 const watson = require('./watson.js')
 const movie = require('./movie.js')
+const components = require('../components/buttonTemplate.js')
 
 const replyText = (token, texts) => {
   texts = Array.isArray(texts) ? texts : [texts];
