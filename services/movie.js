@@ -1,6 +1,7 @@
 'use strict';
 
 const request = require('request');
+const components = require('../components/buttonTemplate.js')
 
 const showTime = {
   '欣欣': '2',
@@ -62,7 +63,7 @@ function getAnswer(intent) {
   switch (intent) {
     case '電影查詢':
       return Object.keys(showTime);
-    case '時刻查詢':
+    case '影城查詢中':
       return null;
   }
 }
