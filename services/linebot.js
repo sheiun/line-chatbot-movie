@@ -259,7 +259,7 @@ function handleText(message, replyToken, source) {
       console.log(`${replyToken}: ${message.text}`);
       return watson.callAssistant(message.text, source.userId).then(resp => {
         const response = resp;
-        if (response.intents) {
+        if (response.intents[0]) {
           const intent = response.intents[0].intent
           return replyText(replyToken, movie.getAnswer(intent))
         }
