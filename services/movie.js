@@ -58,20 +58,23 @@ function getProgramDetail(progId) {
   })
 }
 
+function getAnswer(intent) {
+  switch (intent) {
+    case '電影查詢':
+      return Object.keys(showTime);
+    case '時刻查詢':
+      return null;
+  }
+}
+
 function main() {
-  let playListPromise = getPlayList('2');
-  playListPromise.then((playList) => {
-    console.log(playList.payload.programs.map(program => program.name));
-  }, (err) => {
+  getPlayList('2').then((playList) => console.log(playList.payload.programs.map(program => program.name)), (err) => {
     console.log(err);
   })
 
-  let programEventPromise = getProgramEvent('1410');
-  programEventPromise.then((program) => {
-    console.log(program);
-  }, (err) => {
-    console.error(err)
-  })
+  const program = getProgramEvent('1410').then(program => console.log(program))
 }
+
+module.exports = { getAnswer }
 
 // main();
