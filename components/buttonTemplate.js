@@ -52,12 +52,12 @@ function getButtonTemplate(actions, title = '標題', text = '文字', altText =
 
 function getButtonActions(actions) {
   return actions.map(action => {
-    { label: action, type: 'postback', data: action }
+    return { label: action, type: 'postback', data: action }
   });
 }
 
 function getAnotherAction() {
-  return { label: '其他', type: 'postback', data: 'action=another' }
+  return { label: '其他', type: 'postback', data: 'another' }
 }
 
 module.exports = { getButtonTemplate }
