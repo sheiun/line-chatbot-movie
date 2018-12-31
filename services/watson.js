@@ -27,14 +27,14 @@ const callAssistant = (text, context = {}) => {
 
 module.exports = { callAssistant, user_context };
 
-var con;
-callAssistant('我想看電影')
-  .then(v => {
-    console.log(JSON.stringify(v, null, 2))
-    con = v.context
-  })
-  .then(x =>
-    callAssistant('樹林秀泰', con)
-      .then(v => { console.log(JSON.stringify(v, null, 2)) })
-  )
+// var con;
+// callAssistant('我想看電影')
+//   .then(v => {
+//     console.log(JSON.stringify(v, null, 2))
+//     con = v.context
+//   })
+//   .then(x =>
+//     callAssistant('樹林秀泰', con)
+//       .then(v => { console.log(JSON.stringify(v, null, 2)) })
+//   )
   // .then(x => console.log(con))

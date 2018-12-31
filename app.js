@@ -1,13 +1,13 @@
 'use strict';
 
 const cfenv = require('cfenv')
-const appEnv = cfenv.getAppEnv()
+const appEnv = cfenv.getAppEnv();
 let baseURL = appEnv.url;
 
 const express = require('express');
 const app = express();
 
-const linebot = require('./services/linebot')
+const linebot = require('./services/linebot');
 
 app.use('/static', express.static('static'));
 app.use('/downloaded', express.static('downloaded'));

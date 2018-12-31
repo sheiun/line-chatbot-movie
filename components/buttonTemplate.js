@@ -72,5 +72,3 @@ function getAnotherAction() {
 }
 
 module.exports = { getButtonTemplate }
-
-// TODO: 自動切割 action 數量 max: 4 剩下存在 db 或
