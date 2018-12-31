@@ -1,3 +1,5 @@
+const MAX_BUTTON_SLOT = 4;
+
 function templateMapper(dataArray) {
   return {
     "type": "template",
@@ -48,6 +50,15 @@ function getButtonTemplate(actions, title = '標題', text = '文字', altText =
       actions: getButtonActions(actions),
     },
   }
+}
+
+function getAvaliableActions(actions) {
+  let avaliableActions = actions;
+  if (actions.length > MAX_BUTTON_SLOT) {
+    avaliableActions = actions.splice(0, 3);
+    avaliableActions.append(getAnotherAction())
+  }
+  return actions;
 }
 
 function getButtonActions(actions) {
