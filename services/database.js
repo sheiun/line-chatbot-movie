@@ -8,7 +8,6 @@ let services = appEnv.services;
 
 let mongodb_services = services["mongodb-chatbot-final"];
 
-
 let credentials = mongodb_services[0].credentials;
 
 let options = {
@@ -32,7 +31,7 @@ MongoClient.connect(credentials.uri, options, (err, db) => {
   }
 });
 
-export function addUser(user, conversation) {
+function addUser(user, conversation) {
   return new Promise((resolve, reject) => {
     mongodb.collection("users").insertOne({
       user: user,
@@ -49,7 +48,7 @@ export function addUser(user, conversation) {
   });
 }
 
-export function getUsers() {
+function getUsers() {
   return new Promise((resolve, reject) => {
     mongodb
       .collection("users")
@@ -63,3 +62,5 @@ export function getUsers() {
       });
   });
 }
+
+module.exports = { addUser, getUsers }
