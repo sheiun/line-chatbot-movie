@@ -23,7 +23,8 @@ let credentials = mongodb_services[0].credentials;
 
 let options = {
   ssl: true,
-  sslValidate: true
+  sslValidate: true,
+  useNewUrlParser: true
 };
 
 if (credentials.hasOwnProperty("ca_certificate_base64")) {
