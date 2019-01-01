@@ -60,10 +60,12 @@ function getProgramDetail(progId) {
 }
 
 function getAnswer(intent) {
-  switch (intent) {
-    case '電影查詢':
+  switch (intent.replcae('[回應]', '')) {
+    case '影城':
       return Object.keys(showTime);
-    case '影城查詢中':
+    case '時段':
+      return null;
+    case '結果':
       return null;
   }
 }

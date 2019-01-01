@@ -271,14 +271,15 @@ function handleText(message, replyToken, source) {
       console.log(`${replyToken}: ${message.text}`);
       return watson.callAssistant(message.text, source.userId).then(resp => {
         let intent;
-        console.log(resp);
+        console.log(SON.stringify(resp));
         if (resp.intents[0]) {
           intent = resp.intents[0].intent;
-        } else if (resp.hasOwnProperty('text') && resp.text[0]) {
-          intent = resp.text[0];
+        } else if (resp.output.text[0].includes('[回應]')) {
+          intent = resp.output.text[0];
         } else {
           return replyText(replyToken, resp.output.text);
         }
+        console.log('=== owo ===')
         return replyText(replyToken, components.getButtonTemplate(movie.getAnswer(intent)));
       });
   }
