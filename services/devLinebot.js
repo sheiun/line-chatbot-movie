@@ -272,14 +272,14 @@ function handleText(message, replyToken, source) {
       return watson.callAssistant(message.text, source.userId).then(resp => {
         let intent;
         console.log(JSON.stringify(resp, null, 2));
-        if (resp.intents[0]) {
-          intent = resp.intents[0].intent;
-        } else if (resp.output.text[0].includes('[回應]')) {
+        // FIXME: 把 watson 全部改成 intent
+        // if (resp.intents[0]) {
+        //   intent = resp.intents[0].intent;
+        if (resp.output.text[0].includes('[回應]')) {
           intent = resp.output.text[0];
         } else {
           return replyText(replyToken, resp.output.text);
         }
-        console.log('=== owo ===')
         return replyText(replyToken, components.getButtonTemplate(movie.getAnswer(intent)));
       });
   }
