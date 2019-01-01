@@ -31,11 +31,11 @@ MongoClient.connect(credentials.uri, options, (err, db) => {
   }
 });
 
-function addUser(user, conversation) {
+function addUser(user, context) {
   return new Promise((resolve, reject) => {
     mongodb.collection("users").insertOne({
       user: user,
-      conversation: conversation
+      context: context
     },
       (error, result) => {
         if (error) {
