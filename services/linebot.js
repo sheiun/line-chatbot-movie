@@ -16,10 +16,10 @@ const fs = require('fs');
 const path = require('path');
 const cp = require('child_process');
 
-const watson = require('./watson.js')
-const movie = require('./movie.js')
-const database = require('./database.js')
-const components = require('../components/buttonTemplate.js')
+const watson = require('./watson')
+const movie = require('./movie')
+const database = require('./database')
+const components = require('../components/buttonTemplate')
 
 const replyText = (token, texts) => {
   texts = Array.isArray(texts) ? texts : [texts];

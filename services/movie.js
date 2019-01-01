@@ -1,7 +1,7 @@
 'use strict';
 
 const request = require('request');
-const components = require('../components/buttonTemplate.js')
+const components = require('../components/buttonTemplate')
 
 const showTime = {
   '欣欣': '2',

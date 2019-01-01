@@ -8,6 +8,7 @@ const express = require('express');
 const app = express();
 
 const linebot = require('./services/linebot');
+const devLinebot = require('./services/devLinebot')
 
 app.use('/static', express.static('static'));
 app.use('/downloaded', express.static('downloaded'));
@@ -31,7 +32,7 @@ app.post('/callback', linebot.channelConfig, (req, res) => {
     });
 });
 
-app.post('/dev/callback', linebot.channelConfig, (req, res) => {
+app.post('/dev/callback', devLinebot.channelConfig, (req, res) => {
   if (req.body.destination) {
     console.log("Destination User ID: " + req.body.destination);
   }
@@ -40,7 +41,7 @@ app.post('/dev/callback', linebot.channelConfig, (req, res) => {
     return res.status(500).end();
   }
 
-  Promise.all(req.body.events.map(linebot.handleEvent))
+  Promise.all(req.body.events.map(devLinebot.handleEvent))
     .then(() => res.end())
     .catch((err) => {
       console.error(err);
