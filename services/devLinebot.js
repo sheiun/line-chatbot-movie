@@ -277,7 +277,7 @@ function handleText(message, replyToken, source) {
         } else if (resp.hasOwnProperty('text') && resp.text[0]) {
           intent = resp.text[0];
         } else {
-          return replyText(replyToken, '不清楚');
+          return replyText(replyToken, resp.output.text);
         }
         return replyText(replyToken, components.getButtonTemplate(movie.getAnswer(intent)));
       });
