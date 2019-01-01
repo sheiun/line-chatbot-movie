@@ -64,7 +64,7 @@ function handleEvent(event) {
 
     case 'follow':
       database.createUser(event.source.userId);
-      return replyText(event.replyToken, 'Got followed event');
+      return replyText(event.replyToken, '歡迎訂閱隨機影報!');
 
     case 'unfollow':
       database.deleteUser(event.source.userId)
@@ -271,6 +271,7 @@ function handleText(message, replyToken, source) {
       console.log(`${replyToken}: ${message.text}`);
       return watson.callAssistant(message.text, source.userId).then(resp => {
         let intent;
+        console.log(resp);
         if (resp.intents[0]) {
           intent = resp.intents[0].intent;
         } else if (resp.text[0]) {
