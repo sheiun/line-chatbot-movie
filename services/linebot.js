@@ -63,9 +63,11 @@ function handleEvent(event) {
       }
 
     case 'follow':
+      database.addUser(event.source.userId);
       return replyText(event.replyToken, 'Got followed event');
 
     case 'unfollow':
+      database.deleteUser(event.source.userId)
       return console.log(`Unfollowed this bot: ${JSON.stringify(event)}`);
 
     case 'join':

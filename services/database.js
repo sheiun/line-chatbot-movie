@@ -45,21 +45,48 @@ MongoClient.connect(credentials.uri, options, (err, db) => {
   }
 });
 
-function addUser(user, context) {
+function createUser(userId) {
   return new Promise((resolve, reject) => {
-    mongodb.collection("users").insertOne({
-      user: user,
-      context: context
-    },
-      (error, result) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(result);
+    mongodb
+      .collection("users")
+      .insertOne(
+        {
+          userId: userId,
+          context: {}
+        },
+        (error, result) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(result);
+          }
         }
-      }
-    );
+      )
   });
+}
+
+function addUser(userId, context) {
+  return new Promise((resolve, reject) => {
+    mongodb
+      .collection("users")
+      .updateOne(
+        {
+          userId: userId,
+          context: context
+        },
+        (error, result) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(result);
+          }
+        }
+      );
+  });
+}
+
+function getUser(userId) {
+
 }
 
 function getUsers() {
@@ -77,4 +104,19 @@ function getUsers() {
   });
 }
 
-module.exports = { addUser, getUsers }
+function deleteUser(userId) {
+  return new Promise((resolve, reject) => {
+    mongodb
+      .collection("users")
+      .find()
+      .(err, users) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(users);
+      }
+    };
+  });
+}
+
+module.exports = { createUser, addUser, getUsers, deleteUser }
