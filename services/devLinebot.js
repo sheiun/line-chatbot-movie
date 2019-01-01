@@ -274,7 +274,7 @@ function handleText(message, replyToken, source) {
         console.log(resp);
         if (resp.intents[0]) {
           intent = resp.intents[0].intent;
-        } else if (resp.text[0]) {
+        } else if (resp.hasOwnProperty('text') && resp.text[0]) {
           intent = resp.text[0];
         } else {
           return replyText(replyToken, '不清楚');
