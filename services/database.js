@@ -17,7 +17,7 @@ const appEnv = cfenv.getAppEnv(appEnvOpts);
 
 let services = appEnv.services;
 
-let mongodb_services = services["mongodb-chatbot-final"];
+let mongodb_services = services["compose-for-mongodb"];
 
 let credentials = mongodb_services[0].credentials;
 
