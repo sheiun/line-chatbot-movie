@@ -18,6 +18,7 @@ const cp = require('child_process');
 
 const watson = require('./watson.js')
 const movie = require('./movie.js')
+const database = require('./database.js')
 const components = require('../components/buttonTemplate.js')
 
 const replyText = (token, texts) => {
