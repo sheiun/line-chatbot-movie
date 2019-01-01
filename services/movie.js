@@ -60,7 +60,7 @@ function getProgramDetail(progId) {
 }
 
 function getAnswer(intent) {
-  switch (intent.replcae('[回應]', '')) {
+  switch (intent.replace('[回應]', '')) {
     case '影城':
       return Object.keys(showTime);
     case '時段':
