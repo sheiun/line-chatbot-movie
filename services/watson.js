@@ -10,16 +10,20 @@ const assistant = new AssistantV1({
 
 var user_context = {}; /* userId: context */
 
-const callAssistant = (text, context = {}) => {
+const callAssistant = (text, userId) => {
   return new Promise((resolve, reject) => {
-    assistant.message({
+    let data = {
       workspace_id: '38da265a-084d-40e8-8d87-6ff1cfe537f5', // Movie
       input: { 'text': text },
-      context: context
-    }, (err, resp) => {
+      context: user_context[userId]
+    }
+    if (!data.context) delete data.context
+    assistant.message(data, (err, resp) => {
       if (err)
         reject(err)
       else
+        // test below lines can resolve
+        user_context[userId] = resp.context
         resolve(resp);
     });
   })
