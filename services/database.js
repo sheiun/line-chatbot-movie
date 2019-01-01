@@ -2,7 +2,7 @@ const MongoClient = require("mongodb").MongoClient;
 
 var cfenv = require('cfenv');
 
-const appEnv = cfenv.getAppEnv(appEnvOpts);
+const appEnv = cfenv.getAppEnv();
 
 let services = appEnv.services;
 
