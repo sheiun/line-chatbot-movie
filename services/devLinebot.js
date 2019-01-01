@@ -275,11 +275,12 @@ function handleText(message, replyToken, source) {
         // FIXME: 把 watson 全部改成 intent
         // if (resp.intents[0]) {
         //   intent = resp.intents[0].intent;
-        if (resp.output.text[0].includes('[回應]')) {
-          intent = resp.output.text[0];
+        if (resp.output.generic.includes('[回應]')) {
+          intent = resp.output.generic.text;
         } else {
-          return replyText(replyToken, resp.output.text);
+          return replyText(replyToken, resp.output.generic.text);
         }
+        console.log('myintent: ' + intent)
         return replyText(replyToken, components.getButtonTemplate(movie.getAnswer(intent)));
       });
   }
