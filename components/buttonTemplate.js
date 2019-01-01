@@ -1,5 +1,6 @@
 const MAX_BUTTON_SLOT = 4;
 
+// TODO 存到 mongodb
 var user_actions = {}
 
 function templateMapper(dataArray) {
@@ -49,18 +50,19 @@ function getButtonTemplate(actions, title = '標題', text = '文字', altText =
       // thumbnailImageUrl: buttonsImageURL,
       title: title,
       text: text,
-      actions: getButtonActions(actions),
+      actions: getAvaliableActions(actions),
     },
   }
 }
 
 function getAvaliableActions(actions) {
+  // TODO: 把剩下的 action 存到 temp actions
   let avaliableActions = actions;
   if (actions.length > MAX_BUTTON_SLOT) {
     avaliableActions = actions.splice(0, 3);
     avaliableActions.append(getAnotherAction())
   }
-  return actions;
+  return avaliableActions;
 }
 
 function getButtonActions(actions) {

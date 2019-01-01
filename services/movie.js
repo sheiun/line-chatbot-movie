@@ -64,7 +64,7 @@ function getAnswer(intent) {
     case '影城':
       return Object.keys(showTime);
     case '時段':
-      return null;
+      return ['上午', '下午', '晚上'];
     case '結果':
       return null;
   }

@@ -281,7 +281,7 @@ function handleText(message, replyToken, source) {
           return replyText(replyToken, resp.output.generic.text);
         }
         console.log('myintent: ' + intent)
-        return replyText(replyToken, components.getButtonTemplate(movie.getAnswer(intent)));
+        return replyText(replyToken, components.getButtonTemplate(movie.getAnswer(intent));
       });
   }
 }
