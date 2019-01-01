@@ -65,28 +65,23 @@ function createUser(userId) {
   });
 }
 
-function addUser(userId, context) {
+function getUser(userId) {
   return new Promise((resolve, reject) => {
     mongodb
       .collection("users")
-      .updateOne(
+      .findOne(
         {
           userId: userId,
-          context: context
         },
-        (error, result) => {
+        (error, user) => {
           if (error) {
             reject(error);
           } else {
-            resolve(result);
+            resolve(user);
           }
         }
       );
   });
-}
-
-function getUser(userId) {
-
 }
 
 function getUsers() {
@@ -104,19 +99,43 @@ function getUsers() {
   });
 }
 
+function updateUser(userId, context) {
+  return new Promise((resolve, reject) => {
+    mongodb
+      .collection("users")
+      .updateOne(
+        {
+          userId: userId,
+          context: context
+        },
+        (error, user) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(user);
+          }
+        }
+      );
+  });
+}
+
 function deleteUser(userId) {
   return new Promise((resolve, reject) => {
     mongodb
       .collection("users")
-      .find()
-      .(err, users) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(users);
-      }
-    };
+      .deleteOne(
+        {
+          userId: userId,
+        },
+        (error, user) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(user);
+          }
+        }
+      );
   });
 }
 
-module.exports = { createUser, addUser, getUsers, deleteUser }
+module.exports = { createUser, getUser, getUsers, updateUser, deleteUser }

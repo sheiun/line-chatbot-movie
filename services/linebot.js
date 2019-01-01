@@ -63,7 +63,7 @@ function handleEvent(event) {
       }
 
     case 'follow':
-      database.addUser(event.source.userId);
+      database.createUser(event.source.userId);
       return replyText(event.replyToken, 'Got followed event');
 
     case 'unfollow':
