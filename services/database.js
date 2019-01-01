@@ -1,8 +1,19 @@
 const MongoClient = require("mongodb").MongoClient;
 
 var cfenv = require('cfenv');
+let vcapLocal;
+try {
+  vcapLocal = require('./vcap-local.json');
+  console.log("Loaded local VCAP");
+} catch (e) {
+  console.log(e)
+}
 
-const appEnv = cfenv.getAppEnv();
+const appEnvOpts = vcapLocal ? {
+  vcap: vcapLocal
+} : {}
+
+const appEnv = cfenv.getAppEnv(appEnvOpts);
 
 let services = appEnv.services;
 
@@ -29,7 +40,7 @@ MongoClient.connect(credentials.uri, options, (err, db) => {
   } else {
     mongodb = db.db("chatbot");
     console.log('hello chatbot');
-    
+
   }
 });
 

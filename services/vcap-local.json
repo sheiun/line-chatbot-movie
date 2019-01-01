@@ -1,0 +1,13 @@
+{
+    "db_type": "mongodb",
+    "maps": [],
+    "instance_administration_api": {
+        "instance_id": "df22c1c4-fb1e-42ad-a5fe-e5ea549f04ad",
+        "root": "https://composebroker-dashboard-public.mybluemix.net/api",
+        "deployment_id": "5c27127bd23f9400110af355"
+    },
+    "name": "bmix-dal-yp-df22c1c4-fb1e-42ad-a5fe-e5ea549f04ad",
+    "uri_cli": "mongo --ssl --sslAllowInvalidCertificates portal-ssl793-47.bmix-dal-yp-df22c1c4-fb1e-42ad-a5fe-e5ea549f04ad.4239656056.composedb.com:19217/compose -u admin -p BEIQSPYMYRCLQHTA --authenticationDatabase admin",
+    "deployment_id": "5c27127bd23f9400110af355",
+    "uri": "mongodb://admin:BEIQSPYMYRCLQHTA@portal-ssl793-47.bmix-dal-yp-df22c1c4-fb1e-42ad-a5fe-e5ea549f04ad.4239656056.composedb.com:19217,portal-ssl806-42.bmix-dal-yp-df22c1c4-fb1e-42ad-a5fe-e5ea549f04ad.4239656056.composedb.com:19217/compose?authSource=admin&ssl=true"
+}
