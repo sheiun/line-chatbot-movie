@@ -29,6 +29,14 @@ const replyText = (token, texts) => {
   );
 };
 
+const pushText = (Id, texts) => {
+  texts = Array.isArray(texts) ? texts : [texts];
+  return client.pushText(
+    Id,
+    texts.map((text) => ({ type: 'text', text }))
+  );
+};
+
 function handleEvent(event) {
   if (event.replyToken && event.replyToken.match(/^(.)\1*$/)) {
     return console.log("Test hook recieved: " + JSON.stringify(event.message));

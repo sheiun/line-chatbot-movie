@@ -1,5 +1,7 @@
 const MAX_BUTTON_SLOT = 4;
 
+var user_actions = {}
+
 function templateMapper(dataArray) {
   return {
     "type": "template",

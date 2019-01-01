@@ -28,6 +28,8 @@ MongoClient.connect(credentials.uri, options, (err, db) => {
     console.log(err);
   } else {
     mongodb = db.db("chatbot");
+    console.log('hello chatbot');
+    
   }
 });
 
