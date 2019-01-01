@@ -8,28 +8,27 @@ const assistant = new AssistantV1({
   url: 'https://gateway.watsonplatform.net/assistant/api'
 });
 
-var user_context = {}; /* userId: context */
+const database = require('./database')
 
 const callAssistant = (text, userId) => {
   return new Promise((resolve, reject) => {
     let data = {
       workspace_id: '38da265a-084d-40e8-8d87-6ff1cfe537f5', // Movie
       input: { 'text': text },
-      context: user_context[userId]
+      context: database.getUser(userId).context
     }
     if (!data.context) delete data.context
     assistant.message(data, (err, resp) => {
       if (err)
         reject(err)
       else
-        // test below lines can resolve
-        user_context[userId] = resp.context
+        database.updateUser(userId, resp.context)
         resolve(resp);
     });
   })
 };
 
-module.exports = { callAssistant, user_context };
+module.exports = { callAssistant };
 
 // var con;
 // callAssistant('我想看電影')
