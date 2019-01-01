@@ -271,7 +271,7 @@ function handleText(message, replyToken, source) {
       console.log(`${replyToken}: ${message.text}`);
       return watson.callAssistant(message.text, source.userId).then(resp => {
         let intent;
-        console.log(SON.stringify(resp));
+        console.log(JSON.stringify(resp));
         if (resp.intents[0]) {
           intent = resp.intents[0].intent;
         } else if (resp.output.text[0].includes('[回應]')) {
