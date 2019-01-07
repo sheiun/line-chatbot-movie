@@ -31,7 +31,7 @@ const replyText = (token, texts) => {
 
 const pushText = (Id, texts) => {
   texts = Array.isArray(texts) ? texts : [texts];
-  return client.pushText(
+  return client.pushMessage(
     Id,
     texts.map((text) => ({ type: 'text', text }))
   );
@@ -275,6 +275,7 @@ function handleText(message, replyToken, source) {
         // FIXME: 把 watson 全部改成 intent
         // if (resp.intents[0]) {
         //   intent = resp.intents[0].intent;
+
         if (resp.output.generic.includes('[回應]')) {
           intent = resp.output.generic.text;
         } else if (resp.output.generic.includes('[輸出]')) {
@@ -283,7 +284,7 @@ function handleText(message, replyToken, source) {
           return replyText(replyToken, resp.output.generic.text);
         }
         console.log('myintent: ' + intent);
-        return replyText(replyToken, movie.getAnswer(intent));
+        return replyText(replyToken, movie.getAnswer(intent, source.userId, message.text));
       });
   }
 }
