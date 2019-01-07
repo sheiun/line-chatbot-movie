@@ -59,15 +59,16 @@ function getAvaliableActions(actions) {
   // TODO: 把剩下的 action 存到 temp actions
   let avaliableActions = actions;
   if (actions.length > MAX_BUTTON_SLOT) {
-    avaliableActions = actions.splice(0, 3);
-    avaliableActions.append(getAnotherAction())
+    avaliableActions = actions.splice(0, 4);
+    // TODO: 把其他放進去
+    // avaliableActions.append(getAnotherAction())
   }
   return avaliableActions;
 }
 
 function getButtonActions(actions) {
   return actions.map(action => {
-    return { label: action, type: 'postback', data: action }
+    return { label: action, type: 'postback', data: action, text: action }
   });
 }
 

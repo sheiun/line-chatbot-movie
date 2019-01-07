@@ -19,25 +19,14 @@ const callAssistant = (text, userId) => {
     }
     if (!data.context) delete data.context
     assistant.message(data, (err, resp) => {
-      if (err)
-        reject(err)
-      else
+      if (err){
+        reject(err)}
+      else {
         database.updateUser(userId, resp.context)
-        resolve(resp);
+        resolve(resp)
+      }
     });
   })
 };
 
 module.exports = { callAssistant };
-
-// var con;
-// callAssistant('我想看電影')
-//   .then(v => {
-//     console.log(JSON.stringify(v, null, 2))
-//     con = v.context
-//   })
-//   .then(x =>
-//     callAssistant('樹林秀泰', con)
-//       .then(v => { console.log(JSON.stringify(v, null, 2)) })
-//   )
-  // .then(x => console.log(con))

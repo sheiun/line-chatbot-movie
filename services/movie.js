@@ -65,7 +65,7 @@ function getAnswer(intent) {
       return Object.keys(showTime);
     case '時段':
       return ['上午', '下午', '晚上'];
-    case '結果':
+    default:
       return null;
   }
 }
