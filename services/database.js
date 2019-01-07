@@ -51,8 +51,8 @@ function createUser(userId) {
       .collection("users")
       .insertOne(
         {
-          'userId': userId,
-          'context': {}
+          userId: userId,
+          context: {}
         },
         (error, result) => {
           if (error) {

@@ -63,11 +63,11 @@ function handleEvent(event) {
       }
 
     case 'follow':
-      database.createUser(event.source.userId);
+      database.createUser(event.source.userId).then(result => console.log(result));
       return replyText(event.replyToken, '歡迎訂閱隨機影報!');
 
     case 'unfollow':
-      database.deleteUser(event.source.userId)
+      database.deleteUser(event.source.userId).then(result => console.log(result));
       return console.log(`Unfollowed this bot: ${JSON.stringify(event)}`);
 
     case 'join':
