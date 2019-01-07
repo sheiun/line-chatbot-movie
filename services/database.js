@@ -50,10 +50,7 @@ function createUser(userId) {
     mongodb
       .collection("users")
       .insertOne(
-        {
-          userId: userId,
-          context: {}
-        },
+        { userId: userId, context: {} },
         (error, result) => {
           if (error) {
             reject(error);
@@ -70,9 +67,7 @@ function getUser(userId) {
     mongodb
       .collection("users")
       .findOne(
-        {
-          userId: userId,
-        },
+        { userId: userId },
         (error, user) => {
           if (error) {
             reject(error);
@@ -104,10 +99,8 @@ function updateUser(userId, context) {
     mongodb
       .collection("users")
       .updateOne(
-        {
-          userId: userId,
-          context: context
-        },
+        { userId: userId },
+        { $set: { context: context } },
         (error, user) => {
           if (error) {
             reject(error);
@@ -124,9 +117,7 @@ function deleteUser(userId) {
     mongodb
       .collection("users")
       .deleteOne(
-        {
-          userId: userId,
-        },
+        { userId: userId, },
         (error, user) => {
           if (error) {
             reject(error);
@@ -137,5 +128,25 @@ function deleteUser(userId) {
       );
   });
 }
+
+// function updateUserMovieTime(userId, context) {
+//   return new Promise((resolve, reject) => {
+//     mongodb
+//       .collection("users")
+//       .updateOne(
+//         {
+//           userId: userId,
+//           context: context
+//         },
+//         (error, user) => {
+//           if (error) {
+//             reject(error);
+//           } else {
+//             resolve(user);
+//           }
+//         }
+//       );
+//   });
+// }
 
 module.exports = { createUser, getUser, getUsers, updateUser, deleteUser }
