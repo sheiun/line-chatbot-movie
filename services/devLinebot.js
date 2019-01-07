@@ -63,7 +63,10 @@ function handleEvent(event) {
       }
 
     case 'follow':
-      database.createUser(event.source.userId).then(result => console.log(result));
+      database.createUser(event.source.userId).then(result => {
+        console.log(result)
+        console.log('== follow here')
+      });
       return replyText(event.replyToken, '歡迎訂閱隨機影報!');
 
     case 'unfollow':
