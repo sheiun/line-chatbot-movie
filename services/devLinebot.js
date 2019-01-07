@@ -277,11 +277,13 @@ function handleText(message, replyToken, source) {
         //   intent = resp.intents[0].intent;
         if (resp.output.generic.includes('[回應]')) {
           intent = resp.output.generic.text;
+        } else if (resp.output.generic.includes('[輸出]')) {
+          intent = resp.output.generic.text;
         } else {
           return replyText(replyToken, resp.output.generic.text);
         }
-        console.log('myintent: ' + intent)
-        return replyText(replyToken, components.getButtonTemplate(movie.getAnswer(intent));
+        console.log('myintent: ' + intent);
+        return replyText(replyToken, movie.getAnswer(intent));
       });
   }
 }
