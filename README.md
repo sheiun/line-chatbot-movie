@@ -4,11 +4,11 @@
 
 ## 架構
 
-app.js  
+* app.js  
 
-services/  
-* database.js  
-* linebot.js (devLinebot.js)  
-* movie.js  
-* watson.js  
+* services/  
+* * database.js  
+* * linebot.js (devLinebot.js)  
+* * movie.js  
+* * watson.js  
   
