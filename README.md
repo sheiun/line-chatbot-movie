@@ -7,8 +7,8 @@
 * app.js  
 
 * services/  
-* * database.js  
-* * linebot.js (devLinebot.js)  
-* * movie.js  
-* * watson.js  
+ * database.js  
+ * linebot.js (devLinebot.js)  
+ * movie.js  
+ * watson.js  
   
